@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 const InstagramTiles = () => {
   const InstagramQuery = useStaticQuery(graphql`
     query {
-      allInstaNode(limit: 4) {
+      allInstaNode(limit: 4, sort: { fields: timestamp, order: DESC }) {
         edges {
           node {
             likes
@@ -31,7 +31,13 @@ const InstagramTiles = () => {
       <div className="row">
         {InstagramQuery.allInstaNode.edges.map(edge => (
           <div key={edge.node.id} className="col-md mb-2">
-            <Img fluid={edge.node.localFile.childImageSharp.fluid} alt="" />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.instagram.com/thornfieldattic/"
+            >
+              <Img fluid={edge.node.localFile.childImageSharp.fluid} alt="" />
+            </a>
           </div>
         ))}
         <div></div>

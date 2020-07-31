@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 // import './layout.css'
 
@@ -29,6 +30,11 @@ const Header = () => (
             </Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" activeClassName="active" to="/blog">
+              Blog
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" activeClassName="active" to="/about">
               About
             </Link>
@@ -41,9 +47,15 @@ const Header = () => (
         </ul>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link className="nav-link" activeClassName="active" to="#">
+            <a
+              className="nav-link"
+              activeClassName="active"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.instagram.com/thornfieldattic/"
+            >
               <i className="fab fa-instagram fa-2x"></i>
-            </Link>
+            </a>
           </li>
           <li className="nav-item">
             <Link className="nav-link" activeClassName="active" to="#">

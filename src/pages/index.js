@@ -24,7 +24,12 @@ const Jumbotron = styled.div`
 
   h1 {
     text-transform: uppercase;
-    font-style: bold;
+    font-weight: 800;
+  }
+
+  p {
+    font-weight: 600;
+    letter-spacing: 0.02rem;
   }
 `
 
@@ -32,6 +37,7 @@ const CenteredDiv = styled.div`
   text-align: center;
 
   h2 {
+    margin-top: 3rem;
     font-size: 1.5rem;
     text-transform: uppercase;
   }

@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
 `
 
 const ContentContainer = styled.div`
-  padding-bottom: 2.5rem;
+  padding-bottom: 4rem;
 `
 
 const Layout = props => (
