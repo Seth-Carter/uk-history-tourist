@@ -57,7 +57,8 @@ export default ({ data }) => {
   return (
     <Layout>
       <Jumbotron className="jumbotron jumbotron-fluid">
-        <h1>{data.site.siteMetadata.title}</h1>
+        {/* <h1>{data.site.siteMetadata.title}</h1> */}
+        <h1>English History Tourist</h1>
         <p>A Guide to the UK's Most Historical Places</p>
       </Jumbotron>
       <CenteredDiv>
