@@ -4,6 +4,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 
 const BlogHeader = styled.div`
@@ -20,6 +21,10 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: none;
     color: inherit;
+  }
+
+  &:hover h2 {
+    text-decoration: underline;
   }
 `
 
@@ -54,7 +59,14 @@ const WrapperDiv = styled.div`
 
 const BlogListTemplate = ({ data }) => (
   <Layout>
-    <BlogHeader>
+    <Helmet>
+      <title>The English History Tourist Blog</title>
+      <meta
+        name="description"
+        content="Read the English History Tourist blog for the latest on top history destinations in the UK!"
+      />
+    </Helmet>
+    <BlogHeader className="py-3">
       <h1>Blog</h1>
       <p>Recommendations, attractions, and top historical sites</p>
     </BlogHeader>

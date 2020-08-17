@@ -31,7 +31,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Create paginated blog lists
   const blogListTemplate = path.resolve('./src/templates/blogListTemplate.js')
   const posts = res.data.allContentfulBlogPost.edges
-  const postsPerPage = 2
+  const postsPerPage = 6
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({

@@ -9,7 +9,7 @@ import './custom.css'
 
 const StyledDiv = styled.div`
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   padding-bottom: 2rem;
 `
 

@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
 
 import BlogCards from '../components/blogcards'
 import Layout from '../components/layout'
 import img from '../images/grassy-field.jpg'
 import InstagramTiles from '../components/instagramTiles'
+import useSiteMetadata from '../hooks/useSiteMetadata'
 
 const Jumbotron = styled.div`
   display: flex;
@@ -43,22 +45,25 @@ const CenteredDiv = styled.div`
   }
 `
 
-export default ({ data }) => {
-  useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const HomePage = ({ data, location }) => {
+  const { siteUrl } = useSiteMetadata()
 
   return (
     <Layout>
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+        <meta name="description" content={data.site.siteMetadata.description} />
+        <meta property="og:title" content={data.site.siteMetadata.title} />
+        <meta
+          property="og:description"
+          content={data.site.siteMetadata.description}
+        />
+        <meta property="og:image" content={img} />
+        <meta property="og:url" content={`${siteUrl}${location.pathname}`} />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Jumbotron className="jumbotron jumbotron-fluid">
-        {/* <h1>{data.site.siteMetadata.title}</h1> */}
-        <h1>English History Tourist</h1>
+        <h1>{data.site.siteMetadata.title}</h1>
         <p>A Guide to the UK's Most Historical Places</p>
       </Jumbotron>
       <CenteredDiv>
@@ -72,3 +77,16 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
+
+export default HomePage

@@ -3,7 +3,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Helmet from 'react-helmet'
 
+import useSiteMetadata from '../hooks/useSiteMetadata'
 import Layout from '../components/layout'
 
 const MaxWidthLimit = styled.div`
@@ -56,7 +58,7 @@ const StyledFeaturedImage = styled.img`
   height: auto;
 `
 
-const BlogTemplate = ({ data }) => {
+const BlogTemplate = ({ data, location }) => {
   const options = {
     renderNode: {
       // eslint-disable-next-line react/display-name
@@ -69,8 +71,28 @@ const BlogTemplate = ({ data }) => {
     },
   }
 
+  const { siteUrl } = useSiteMetadata()
+
   return (
     <Layout>
+      <Helmet>
+        <title>{data.contentfulBlogPost.title}</title>
+        <meta
+          name="description"
+          content={data.contentfulBlogPost.description}
+        />
+        <meta property="og:title" content={data.contentfulBlogPost.title} />
+        <meta
+          property="og:description"
+          content={data.contentfulBlogPost.description}
+        />
+        <meta
+          property="og:image"
+          content={data.contentfulBlogPost.featuredImage.fluid.src}
+        />
+        <meta property="og:url" content={`${siteUrl}${location.pathname}`} />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <MaxWidthLimit>
         <StyledH1>{data.contentfulBlogPost.title}</StyledH1>
         <p className="author">{data.contentfulBlogPost.author.authorName}</p>
@@ -109,6 +131,7 @@ export const query = graphql`
       author {
         authorName
       }
+      description
     }
   }
 `
