@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-// import './layout.css'
-
 const Header = () => (
   <div>
     <nav className="navbar navbar-expand-lg navbar-light">

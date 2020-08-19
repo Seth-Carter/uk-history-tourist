@@ -21,7 +21,7 @@ const Jumbotron = styled.div`
   height: 300px;
   color: white;
   text-align: center;
-  border-radius: calc(0.25rem - 1px);
+  border-radius: 0.25rem;
   justify-content: center;
 
   h1 {

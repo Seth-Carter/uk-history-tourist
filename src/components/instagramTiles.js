@@ -1,6 +1,9 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import styled from 'styled-components'
+
+const InstaDiv = styled.div``
 
 const InstagramTiles = () => {
   const InstagramQuery = useStaticQuery(graphql`
@@ -30,7 +33,7 @@ const InstagramTiles = () => {
     <div className="container-fluid px-0">
       <div className="row">
         {InstagramQuery.allInstaNode.edges.map(edge => (
-          <div key={edge.node.id} className="col-md mb-2">
+          <InstaDiv key={edge.node.id} className="col-md mb-2">
             <a
               target="_blank"
               rel="noreferrer"
@@ -38,7 +41,7 @@ const InstagramTiles = () => {
             >
               <Img fluid={edge.node.localFile.childImageSharp.fluid} alt="" />
             </a>
-          </div>
+          </InstaDiv>
         ))}
         <div></div>
       </div>

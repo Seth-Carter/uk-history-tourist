@@ -5,15 +5,10 @@ import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
+
+import Subheader from '../components/subheader'
 import Layout from '../components/layout'
 
-const BlogHeader = styled.div`
-  text-align: center;
-
-  h1 {
-    font-weight: 800;
-  }
-`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
@@ -66,10 +61,10 @@ const BlogListTemplate = ({ data }) => (
         content="Read the English History Tourist blog for the latest on top history destinations in the UK!"
       />
     </Helmet>
-    <BlogHeader className="py-3">
+    <Subheader>
       <h1>Blog</h1>
       <p>Recommendations, attractions, and top historical sites</p>
-    </BlogHeader>
+    </Subheader>
     <WrapperDiv>
       {data.allContentfulBlogPost.edges.map(edge => (
         <div key={edge.node.id} className="card mb-3">
