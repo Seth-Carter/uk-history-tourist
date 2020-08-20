@@ -23,7 +23,6 @@ const StyledFooter = styled.div`
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-    margin-right: 2rem;
   }
   
   a {
@@ -43,16 +42,16 @@ const StyledFooter = styled.div`
 `
 
 const Footer = () => (
-  <StyledFooter>
-    <div className="flex-row">
-      <div className="flex-column">
+  <StyledFooter className="container">
+    <div className="row">
+      <div className="col-sm-6">
         <h5>About Us</h5>
-        <p>
+        <p className="copyright">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore dolore magna aliqua.
         </p>
       </div>
-      <div className="flex-column">
+      <div className="col-sm-6">
         <h5>Social Media</h5>
         <div className="flex-row">
           <Link className="nav-link" activeClassName="active" to="#">
