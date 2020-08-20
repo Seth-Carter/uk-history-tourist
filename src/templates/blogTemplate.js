@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Helmet from 'react-helmet'
+import { DiscussionEmbed } from 'disqus-react'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import Layout from '../components/layout'
@@ -37,7 +38,7 @@ const StyledParagraph = styled.div`
   padding-top: 1.5rem;
   line-height: 2;
   font-size: 1.15rem;
-  margin-bottom: 20px;
+  margin-bottom: 4rem;
 
   p:first-of-type:first-letter {
     float: left;
@@ -72,6 +73,14 @@ const BlogTemplate = ({ data, location }) => {
   }
 
   const { siteUrl } = useSiteMetadata()
+
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: {
+      identifier: data.contentfulBlogPost.id,
+      title: data.contentfulBlogPost.title,
+    },
+  }
 
   return (
     <Layout>
@@ -108,6 +117,7 @@ const BlogTemplate = ({ data, location }) => {
             options
           )}
         </StyledParagraph>
+        <DiscussionEmbed {...disqusConfig} />
       </MaxWidthLimit>
     </Layout>
   )
@@ -132,6 +142,7 @@ export const query = graphql`
         authorName
       }
       description
+      id
     }
   }
 `

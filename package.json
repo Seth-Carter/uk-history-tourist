@@ -18,6 +18,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "disqus-react": "^1.0.9",
     "gatsby": "^2.24.15",
     "gatsby-cli": "^2.12.87",
     "gatsby-env-variables": "^2.0.0",

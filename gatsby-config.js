@@ -31,7 +31,7 @@ module.exports = {
     author: 'Christina Carter',
     description:
       'The best places and things to see for history lovers visiting the United Kingdom!',
-    siteUrl: 'https://englishistorytourist.com',
+    siteUrl: 'https://ukhistorytourist.com',
     social: [
       {
         name: 'instagram',
