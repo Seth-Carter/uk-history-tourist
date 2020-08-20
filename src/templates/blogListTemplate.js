@@ -131,7 +131,7 @@ const BlogListTemplate = ({ data, pageContext }) => {
               <StyledLink
                 key={`pagination-number${i + 1}`}
                 activeClassName="active-page"
-                to={`/blog/${i === 0 ? '' : i + 1}`}
+                to={`/blog${i === 0 ? '' : `/${i + 1}`}`}
               >
                 {i + 1}
               </StyledLink>
