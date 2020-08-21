@@ -1,4 +1,7 @@
+
 body {
+  position: relative;
+  overflow-x: hidden;
   font-family: 'Merriweather', serif;
   font-weight: 300;
   font-style: normal;

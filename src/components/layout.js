@@ -9,12 +9,12 @@ import './custom.css'
 
 const StyledDiv = styled.div`
   position: relative;
-  min-height: 90vh;
   padding-bottom: 2rem;
 `
 
 const ContentContainer = styled.div`
   padding-bottom: 4rem;
+  min-height: 75vh;
 `
 
 const Layout = props => (

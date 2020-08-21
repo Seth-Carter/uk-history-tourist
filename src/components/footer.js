@@ -5,11 +5,7 @@ import { Link } from 'gatsby'
 const currentYear = new Date().getFullYear()
 
 const StyledFooter = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-
+  
   div.flex-row {
     display: flex;
     flex-direction: row;
@@ -19,7 +15,7 @@ const StyledFooter = styled.div`
   }
 
   div.flex-column {
-    display: flex;
+   
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
@@ -42,7 +38,7 @@ const StyledFooter = styled.div`
 `
 
 const Footer = () => (
-  <StyledFooter className="container">
+  <StyledFooter className="container-fluid">
     <div className="row">
       <div className="col-sm-6">
         <h5>About Us</h5>
