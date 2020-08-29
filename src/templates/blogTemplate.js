@@ -3,8 +3,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
+import Img from 'gatsby-image'
+
 import Helmet from 'react-helmet'
 import { DiscussionEmbed } from 'disqus-react'
+import { getFluidGatsbyImage } from '../components/getFluidGatsbyImage'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import Layout from '../components/layout'
@@ -60,15 +64,26 @@ const StyledFeaturedImage = styled.img`
 `
 
 const BlogTemplate = ({ data, location }) => {
-  const options = {
-    renderNode: {
-      // eslint-disable-next-line react/display-name
-      'embedded-asset-block': node => {
-        const alt = node.data.target.fields.title['en-US']
-        const url = `https:${node.data.target.fields.file['en-US'].url}`
+  // const options = {
+  //   renderNode: {
+  //     // eslint-disable-next-line react/display-name
+  //     'embedded-asset-block': node => {
+  //       const alt = node.data.target.fields.title['en-US']
+  //       const url = `https:${node.data.target.fields.file['en-US'].url}`
 
-        return <img alt={alt} src={url} />
-      },
+  //       return <img alt={alt} src={url} />
+  //     },
+  //   },
+  // }
+
+  const options = {
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      const { file, title } = data.target.fields
+      const image = {
+        file: file['en-US'],
+      }
+      const fluidProps = getFluidGatsbyImage(image, { maxWidth: 720 })
+      return <Img fluid={fluidProps} alt={title['en-US']} />
     },
   }
 

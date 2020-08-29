@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^14.1.1",
     "babel-plugin-styled-components": "^1.11.1",
     "disqus-react": "^1.0.9",
     "gatsby": "^2.24.47",
@@ -31,7 +32,9 @@
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-source-instagram": "^0.8.0",
     "gatsby-transformer-sharp": "^2.5.13",
+    "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
+    "qs": "^6.9.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
