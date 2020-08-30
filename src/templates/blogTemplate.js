@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import Img from 'gatsby-image'
 
 import Helmet from 'react-helmet'
@@ -22,9 +22,14 @@ const MaxWidthLimit = styled.div`
   }
 
   h2 {
-    font-size: 1.65rem;
+    font-size: 1.8rem;
     margin-top: 30px;
     padding-bottom: 5px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-style: italic;
   }
 
   p.publish-date {
@@ -64,26 +69,30 @@ const StyledFeaturedImage = styled.img`
 `
 
 const BlogTemplate = ({ data, location }) => {
-  // const options = {
-  //   renderNode: {
-  //     // eslint-disable-next-line react/display-name
-  //     'embedded-asset-block': node => {
-  //       const alt = node.data.target.fields.title['en-US']
-  //       const url = `https:${node.data.target.fields.file['en-US'].url}`
-
-  //       return <img alt={alt} src={url} />
-  //     },
-  //   },
-  // }
-
   const options = {
-    [BLOCKS.EMBEDDED_ASSET]: node => {
-      const { file, title } = data.target.fields
-      const image = {
-        file: file['en-US'],
-      }
-      const fluidProps = getFluidGatsbyImage(image, { maxWidth: 720 })
-      return <Img fluid={fluidProps} alt={title['en-US']} />
+    renderMark: {
+      // eslint-disable-next-line react/display-name
+      [MARKS.BOLD]: text => <span style={{ fontWeight: 700 }}>{text}</span>,
+      // eslint-disable-next-line react/display-name
+      [MARKS.ITALIC]: text => (
+        <span style={{ fontStyle: 'italic' }}>{text}</span>
+      ),
+      // eslint-disable-next-line react/display-name
+      [MARKS.UNDERLINE]: text => (
+        <span style={{ textDecoration: 'underline' }}>{text}</span>
+      ),
+    },
+
+    renderNode: {
+      // eslint-disable-next-line react/display-name
+      'embedded-asset-block': node => {
+        const { file, title } = node.data.target.fields
+        const image = {
+          file: file['en-US'],
+        }
+        const fluidProps = getFluidGatsbyImage(image, { maxWidth: 720 })
+        return <Img className="mb-4" fluid={fluidProps} alt={title['en-US']} />
+      },
     },
   }
 
