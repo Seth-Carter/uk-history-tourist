@@ -1,4 +1,4 @@
-This is a simple static blog site created with GatsbyJS and Bootstrap.
+This is a static blog site created with GatsbyJS and Bootstrap.
 
 It also features Styled Components for custom CSS in JS and React Helmet for metadata insertion.
 
